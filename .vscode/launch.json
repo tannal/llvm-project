@@ -1,0 +1,42 @@
+{
+    "configurations": [
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "Hello-gdb",
+            "target": "./out/debug/bin/clang",
+            "arguments": "local/addc.c",
+            "cwd": "${workspaceRoot}",
+            "valuesFormatting": "parseText",
+            "autorun": ["set follow-fork-mode child"],
+            "pathSubstitutions": {
+                "tools/": "${workspaceRoot}"
+            }
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "no-input-files",
+            "program": "${workspaceFolder}/build/bin/clang",
+            "args": [
+                "local/add.c"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Launch",
+            "program": "${workspaceFolder}/build/bin/clang",
+            "args": [
+                "-S",
+                "-emit-llvm",
+                "-O1",
+                "local/add.c",
+                "-o",
+                "local/add.ll"
+            ],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
